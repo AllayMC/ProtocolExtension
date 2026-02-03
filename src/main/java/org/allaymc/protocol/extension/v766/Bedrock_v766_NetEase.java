@@ -3,6 +3,7 @@ package org.allaymc.protocol.extension.v766;
 import org.allaymc.protocol.extension.packet.ConfirmSkinPacket;
 import org.allaymc.protocol.extension.packet.NetEaseJsonPacket;
 import org.allaymc.protocol.extension.packet.PyRpcPacket;
+import org.allaymc.protocol.extension.packet.StoreBuySuccessPacket;
 import org.cloudburstmc.protocol.bedrock.codec.BedrockCodec;
 import org.cloudburstmc.protocol.bedrock.codec.v712.Bedrock_v712;
 import org.cloudburstmc.protocol.bedrock.codec.v766.Bedrock_v766;
@@ -33,7 +34,8 @@ public class Bedrock_v766_NetEase extends Bedrock_v766 {
             .updateSerializer(TextPacket.class, TextSerializer_v766_NetEase.INSTANCE)
             .updateSerializer(PlayerEnchantOptionsPacket.class, PlayerEnchantOptionsSerializer_v766_NetEase.INSTANCE)
             .registerPacket(PyRpcPacket::new, PyRpcSerializer_v766_NetEase.INSTANCE, 200, PacketRecipient.BOTH)
-            .registerPacket(ConfirmSkinPacket::new, ConfirmSkinSerializer_v766_NetEase.INSTANCE, 228, PacketRecipient.CLIENT)
+            .registerPacket(StoreBuySuccessPacket::new, StoreBuySuccessSerializer_v766_NetEase.INSTANCE, 202, PacketRecipient.BOTH) // TODO: check packet recipient
             .registerPacket(NetEaseJsonPacket::new, NetEaseJsonSerializer_v766_NetEase.INSTANCE, 203, PacketRecipient.BOTH)
+            .registerPacket(ConfirmSkinPacket::new, ConfirmSkinSerializer_v766_NetEase.INSTANCE, 228, PacketRecipient.CLIENT)
             .build();
 }
