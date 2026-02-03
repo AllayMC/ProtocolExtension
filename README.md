@@ -35,7 +35,7 @@ dependencies {
 <dependency>
     <groupId>org.allaymc</groupId>
     <artifactId>protocol-extension</artifactId>
-    <version><version></version>
+    <version>version</version>
 </dependency>
 ```
 
