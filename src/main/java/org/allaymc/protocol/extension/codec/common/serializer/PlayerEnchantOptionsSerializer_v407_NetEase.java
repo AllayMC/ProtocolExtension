@@ -1,4 +1,4 @@
-package org.allaymc.protocol.extension.v766;
+package org.allaymc.protocol.extension.codec.common.serializer;
 
 import io.netty.buffer.ByteBuf;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
@@ -15,9 +15,9 @@ import java.util.List;
 /**
  * @author daoge_cmd
  */
-public class PlayerEnchantOptionsSerializer_v766_NetEase extends PlayerEnchantOptionsSerializer_v407 {
+public class PlayerEnchantOptionsSerializer_v407_NetEase extends PlayerEnchantOptionsSerializer_v407 {
 
-    public static final PlayerEnchantOptionsSerializer_v766_NetEase INSTANCE = new PlayerEnchantOptionsSerializer_v766_NetEase();
+    public static final PlayerEnchantOptionsSerializer_v407_NetEase INSTANCE = new PlayerEnchantOptionsSerializer_v407_NetEase();
 
     protected void writeOption(ByteBuf buffer, BedrockCodecHelper helper, EnchantOptionData option) {
         VarInts.writeUnsignedInt(buffer, option.getCost());

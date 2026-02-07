@@ -1,4 +1,4 @@
-package org.allaymc.protocol.extension.v766;
+package org.allaymc.protocol.extension.codec.v766.serializer;
 
 import io.netty.buffer.ByteBuf;
 import org.cloudburstmc.math.vector.Vector2f;
@@ -15,7 +15,7 @@ import org.cloudburstmc.protocol.common.util.VarInts;
  */
 public class PlayerAuthInputSerializer_v766_NetEase extends PlayerAuthInputSerializer_v766 {
 
-    public static final PlayerAuthInputSerializer_v766 INSTANCE = new PlayerAuthInputSerializer_v766_NetEase();
+    public static final PlayerAuthInputSerializer_v766_NetEase INSTANCE = new PlayerAuthInputSerializer_v766_NetEase();
 
     @Override
     public void serialize(ByteBuf buffer, BedrockCodecHelper helper, PlayerAuthInputPacket packet) {

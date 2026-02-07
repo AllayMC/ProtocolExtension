@@ -1,4 +1,4 @@
-package org.allaymc.protocol.extension.v630;
+package org.allaymc.protocol.extension.codec.v686.serializer;
 
 import io.netty.buffer.ByteBuf;
 import org.cloudburstmc.math.vector.Vector2f;
@@ -13,9 +13,9 @@ import org.cloudburstmc.protocol.common.util.VarInts;
 /**
  * @author daoge_cmd
  */
-public class PlayerAuthInputSerializer_v630_NetEase extends PlayerAuthInputSerializer_v575 {
+public class PlayerAuthInputSerializer_v686_NetEase extends PlayerAuthInputSerializer_v575 {
 
-    public static final PlayerAuthInputSerializer_v575 INSTANCE = new PlayerAuthInputSerializer_v630_NetEase();
+    public static final PlayerAuthInputSerializer_v686_NetEase INSTANCE = new PlayerAuthInputSerializer_v686_NetEase();
 
     @Override
     public void serialize(ByteBuf buffer, BedrockCodecHelper helper, PlayerAuthInputPacket packet) {
@@ -54,8 +54,6 @@ public class PlayerAuthInputSerializer_v630_NetEase extends PlayerAuthInputSeria
             VarInts.writeLong(buffer, packet.getPredictedVehicle());
         }
         helper.writeVector2f(buffer, packet.getAnalogMoveVector());
-//        helper.writeVector3f(buffer, packet.getCameraOrientation());
-//        helper.writeVector2f(buffer, packet.getRawMoveVector());
     }
 
     @Override
@@ -91,7 +89,5 @@ public class PlayerAuthInputSerializer_v630_NetEase extends PlayerAuthInputSeria
             packet.setPredictedVehicle(VarInts.readLong(buffer));
         }
         packet.setAnalogMoveVector(helper.readVector2f(buffer));
-//        packet.setCameraOrientation(helper.readVector3f(buffer));
-//        packet.setRawMoveVector(helper.readVector2f(buffer));
     }
 }

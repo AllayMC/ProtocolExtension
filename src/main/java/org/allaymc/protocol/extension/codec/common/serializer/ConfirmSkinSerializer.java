@@ -1,4 +1,4 @@
-package org.allaymc.protocol.extension.common;
+package org.allaymc.protocol.extension.codec.common.serializer;
 
 import io.netty.buffer.ByteBuf;
 import org.allaymc.protocol.extension.packet.ConfirmSkinPacket;

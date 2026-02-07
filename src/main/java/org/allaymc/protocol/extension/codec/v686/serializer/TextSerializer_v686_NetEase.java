@@ -1,16 +1,13 @@
-package org.allaymc.protocol.extension.v630;
+package org.allaymc.protocol.extension.codec.v686.serializer;
 
 import io.netty.buffer.ByteBuf;
 import org.cloudburstmc.protocol.bedrock.codec.BedrockCodecHelper;
-import org.cloudburstmc.protocol.bedrock.codec.v554.serializer.TextSerializer_v554;
+import org.cloudburstmc.protocol.bedrock.codec.v685.serializer.TextSerializer_v685;
 import org.cloudburstmc.protocol.bedrock.packet.TextPacket;
 
-/**
- * @author daoge_cmd
- */
-public class TextSerializer_v630_NetEase extends TextSerializer_v554 {
+public class TextSerializer_v686_NetEase extends TextSerializer_v685 {
 
-    public static final TextSerializer_v554 INSTANCE = new TextSerializer_v630_NetEase();
+    public static final TextSerializer_v686_NetEase INSTANCE = new TextSerializer_v686_NetEase();
 
     @Override
     public void serialize(ByteBuf buffer, BedrockCodecHelper helper, TextPacket packet) {
