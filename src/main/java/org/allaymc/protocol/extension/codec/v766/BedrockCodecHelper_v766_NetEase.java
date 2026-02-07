@@ -1,4 +1,4 @@
-package org.allaymc.protocol.extension.v766;
+package org.allaymc.protocol.extension.codec.v766;
 
 import io.netty.buffer.ByteBuf;
 import org.cloudburstmc.protocol.bedrock.codec.EntityDataTypeMap;

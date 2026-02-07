@@ -1,5 +1,8 @@
-package org.allaymc.protocol.extension.v766;
+package org.allaymc.protocol.extension.codec.v766;
 
+import org.allaymc.protocol.extension.codec.common.serializer.*;
+import org.allaymc.protocol.extension.codec.v686.serializer.TextSerializer_v686_NetEase;
+import org.allaymc.protocol.extension.codec.v766.serializer.PlayerAuthInputSerializer_v766_NetEase;
 import org.allaymc.protocol.extension.packet.ConfirmSkinPacket;
 import org.allaymc.protocol.extension.packet.NetEaseJsonPacket;
 import org.allaymc.protocol.extension.packet.PyRpcPacket;
@@ -31,11 +34,11 @@ public class Bedrock_v766_NetEase extends Bedrock_v766 {
             .raknetProtocolVersion(8)
             .helper(() -> new BedrockCodecHelper_v766_NetEase(ENTITY_DATA, GAME_RULE_TYPES, ITEM_STACK_REQUEST_TYPES, CONTAINER_SLOT_TYPES, PLAYER_ABILITIES, TEXT_PROCESSING_ORIGINS))
             .updateSerializer(PlayerAuthInputPacket.class, PlayerAuthInputSerializer_v766_NetEase.INSTANCE)
-            .updateSerializer(TextPacket.class, TextSerializer_v766_NetEase.INSTANCE)
-            .updateSerializer(PlayerEnchantOptionsPacket.class, PlayerEnchantOptionsSerializer_v766_NetEase.INSTANCE)
-            .registerPacket(PyRpcPacket::new, PyRpcSerializer_v766_NetEase.INSTANCE, 200, PacketRecipient.BOTH)
-            .registerPacket(StoreBuySuccessPacket::new, StoreBuySuccessSerializer_v766_NetEase.INSTANCE, 202, PacketRecipient.BOTH) // TODO: check packet recipient
-            .registerPacket(NetEaseJsonPacket::new, NetEaseJsonSerializer_v766_NetEase.INSTANCE, 203, PacketRecipient.BOTH)
-            .registerPacket(ConfirmSkinPacket::new, ConfirmSkinSerializer_v766_NetEase.INSTANCE, 228, PacketRecipient.CLIENT)
+            .updateSerializer(TextPacket.class, TextSerializer_v686_NetEase.INSTANCE)
+            .updateSerializer(PlayerEnchantOptionsPacket.class, PlayerEnchantOptionsSerializer_v407_NetEase.INSTANCE)
+            .registerPacket(PyRpcPacket::new, PyRpcSerializer.INSTANCE, 200, PacketRecipient.BOTH)
+            .registerPacket(StoreBuySuccessPacket::new, StoreBuySuccessSerializer.INSTANCE, 202, PacketRecipient.BOTH) // TODO: check packet recipient
+            .registerPacket(NetEaseJsonPacket::new, NetEaseJsonSerializer.INSTANCE, 203, PacketRecipient.BOTH)
+            .registerPacket(ConfirmSkinPacket::new, ConfirmSkinSerializer.INSTANCE, 228, PacketRecipient.CLIENT)
             .build();
 }

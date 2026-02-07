@@ -13,6 +13,8 @@ A NetEase (China) Minecraft protocol extension library for [CloudburstMC/Protoco
 
 | Protocol Version | Minecraft Version |
 |------------------|-------------------|
+| v630             | 1.20.50           |
+| v686             | 1.21.2            |
 | v766             | 1.21.50           |
 
 ## Installation
@@ -44,7 +46,7 @@ dependencies {
 ### Using NetEase Codec
 
 ```java
-import org.allaymc.protocol.extension.v766.Bedrock_v766_NetEase;
+import org.allaymc.protocol.extension.codec.v766.Bedrock_v766_NetEase;
 import org.cloudburstmc.protocol.bedrock.codec.BedrockCodec;
 
 BedrockCodec codec = Bedrock_v766_NetEase.CODEC;
