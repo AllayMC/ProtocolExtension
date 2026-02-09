@@ -32,7 +32,7 @@ public class PyRpcPacket implements BedrockPacket {
     }
 
     public BedrockPacketType getPacketType() {
-        return BedrockPacketType.UNKNOWN;
+        return NetEasePacketType.PY_RPC;
     }
 
     @Override

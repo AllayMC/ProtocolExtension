@@ -28,7 +28,7 @@ public class ConfirmSkinPacket implements BedrockPacket {
     }
 
     public BedrockPacketType getPacketType() {
-        return BedrockPacketType.UNKNOWN;
+        return NetEasePacketType.CONFIRM_SKIN;
     }
 
     @Override

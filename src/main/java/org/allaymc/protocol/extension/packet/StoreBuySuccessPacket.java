@@ -16,7 +16,7 @@ public class StoreBuySuccessPacket implements BedrockPacket {
 
     @Override
     public BedrockPacketType getPacketType() {
-        return BedrockPacketType.UNKNOWN;
+        return NetEasePacketType.STORE_BUY_SUCCESS;
     }
 
     @Override

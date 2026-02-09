@@ -16,9 +16,9 @@ repositories {
 }
 
 dependencies {
-    api(group = "org.cloudburstmc.protocol", name = "bedrock-connection", version = "3.0.0.Beta11-20260105.115034-18")
-    api(group = "org.cloudburstmc.protocol", name = "common", version = "3.0.0.Beta11-20260105.115034-17")
-    api(group = "org.cloudburstmc.protocol", name = "bedrock-codec", version = "3.0.0.Beta11-20260105.115034-18")
+    api(group = "org.cloudburstmc.protocol", name = "bedrock-connection", version = "3.0.0.Beta12-20260209.180455-4")
+    api(group = "org.cloudburstmc.protocol", name = "common", version = "3.0.0.Beta12-20260209.180455-4")
+    api(group = "org.cloudburstmc.protocol", name = "bedrock-codec", version = "3.0.0.Beta12-20260209.180455-4")
     compileOnly(group = "org.projectlombok", name = "lombok", version = "1.18.34")
     annotationProcessor(group = "org.projectlombok", name = "lombok", version = "1.18.34")
 }

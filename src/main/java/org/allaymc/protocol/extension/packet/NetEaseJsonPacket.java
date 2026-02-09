@@ -21,7 +21,7 @@ public class NetEaseJsonPacket implements BedrockPacket {
 
     @Override
     public BedrockPacketType getPacketType() {
-        return BedrockPacketType.UNKNOWN;
+        return NetEasePacketType.NET_EASE_JSON;
     }
 
     @Override
