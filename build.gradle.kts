@@ -6,7 +6,7 @@ plugins {
 }
 
 group = "org.allaymc"
-version = "0.1.6"
+version = "0.1.7-SNAPSHOT"
 description = "NetEase protocol extension for CloudburstMC/Protocol"
 
 repositories {
