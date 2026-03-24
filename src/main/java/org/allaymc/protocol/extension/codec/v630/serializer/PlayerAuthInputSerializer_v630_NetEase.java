@@ -1,6 +1,7 @@
 package org.allaymc.protocol.extension.codec.v630.serializer;
 
 import io.netty.buffer.ByteBuf;
+import org.allaymc.protocol.extension.packet.NetEasePlayerAuthInputPacket;
 import org.cloudburstmc.math.vector.Vector2f;
 import org.cloudburstmc.math.vector.Vector3f;
 import org.cloudburstmc.protocol.bedrock.codec.BedrockCodecHelper;
@@ -38,8 +39,10 @@ public class PlayerAuthInputSerializer_v630_NetEase extends PlayerAuthInputSeria
         VarInts.writeUnsignedLong(buffer, packet.getTick());
         helper.writeVector3f(buffer, packet.getDelta());
 
+        NetEasePlayerAuthInputPacket netEase = packet instanceof NetEasePlayerAuthInputPacket netEasePacket ? netEasePacket : null;
+
         // NetEase only: cameraDeparted
-        buffer.writeBoolean(false);
+        buffer.writeBoolean(netEase != null && netEase.isCameraDeparted());
 
         if (packet.getInputData().contains(PlayerAuthInputData.PERFORM_ITEM_INTERACTION)) {
             this.writeItemUseTransaction(buffer, helper, packet.getItemUseTransaction());
@@ -77,8 +80,11 @@ public class PlayerAuthInputSerializer_v630_NetEase extends PlayerAuthInputSeria
         packet.setTick(VarInts.readUnsignedLong(buffer));
         packet.setDelta(helper.readVector3f(buffer));
 
-        // NetEase only: cameraDeparted
-        buffer.readBoolean();
+        if (packet instanceof NetEasePlayerAuthInputPacket netEase) {
+            netEase.setCameraDeparted(buffer.readBoolean());
+        } else {
+            buffer.readBoolean();
+        }
 
         if (packet.getInputData().contains(PlayerAuthInputData.PERFORM_ITEM_INTERACTION)) {
             packet.setItemUseTransaction(this.readItemUseTransaction(buffer, helper));

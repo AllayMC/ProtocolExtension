@@ -1,6 +1,7 @@
 package org.allaymc.protocol.extension.codec.v686.serializer;
 
 import io.netty.buffer.ByteBuf;
+import org.allaymc.protocol.extension.packet.NetEasePlayerAuthInputPacket;
 import org.cloudburstmc.math.vector.Vector2f;
 import org.cloudburstmc.math.vector.Vector3f;
 import org.cloudburstmc.protocol.bedrock.codec.BedrockCodecHelper;
@@ -34,8 +35,10 @@ public class PlayerAuthInputSerializer_v686_NetEase extends PlayerAuthInputSeria
         VarInts.writeUnsignedLong(buffer, packet.getTick());
         helper.writeVector3f(buffer, packet.getDelta());
 
+        NetEasePlayerAuthInputPacket netEase = packet instanceof NetEasePlayerAuthInputPacket netEasePacket ? netEasePacket : null;
+
         // NetEase only: cameraDeparted
-        buffer.writeBoolean(false);
+        buffer.writeBoolean(netEase != null && netEase.isCameraDeparted());
 
         if (packet.getInputData().contains(PlayerAuthInputData.PERFORM_ITEM_INTERACTION)) {
             this.writeItemUseTransaction(buffer, helper, packet.getItemUseTransaction());
@@ -56,12 +59,13 @@ public class PlayerAuthInputSerializer_v686_NetEase extends PlayerAuthInputSeria
         helper.writeVector2f(buffer, packet.getAnalogMoveVector());
 
         // NetEase only start
-        buffer.writeBoolean(false); // ThirdPersonPerspective
-        buffer.writeFloatLE(0);
-        buffer.writeFloatLE(0); // PlayerRotationToCamera
-        buffer.writeBoolean(false); // ReadyPosDeltaDirty
-        buffer.writeBoolean(false); // OnGround
-        buffer.writeByte(0); // ResetPosition
+        buffer.writeBoolean(netEase != null && netEase.isThirdPersonPerspective());
+        Vector2f playerRotationToCamera = netEase != null ? netEase.getPlayerRotationToCamera() : Vector2f.from(0, 0);
+        buffer.writeFloatLE(playerRotationToCamera.getX());
+        buffer.writeFloatLE(playerRotationToCamera.getY());
+        buffer.writeBoolean(netEase != null && netEase.isReadyPosDeltaDirty());
+        buffer.writeBoolean(netEase != null && netEase.isOnGround());
+        buffer.writeByte(netEase != null ? netEase.getResetPosition() : 0);
         // NetEase only end
     }
 
@@ -81,8 +85,11 @@ public class PlayerAuthInputSerializer_v686_NetEase extends PlayerAuthInputSeria
         packet.setTick(VarInts.readUnsignedLong(buffer));
         packet.setDelta(helper.readVector3f(buffer));
 
-        // NetEase only: cameraDeparted
-        buffer.readBoolean();
+        if (packet instanceof NetEasePlayerAuthInputPacket netEase) {
+            netEase.setCameraDeparted(buffer.readBoolean());
+        } else {
+            buffer.readBoolean();
+        }
 
         if (packet.getInputData().contains(PlayerAuthInputData.PERFORM_ITEM_INTERACTION)) {
             packet.setItemUseTransaction(this.readItemUseTransaction(buffer, helper));
@@ -99,13 +106,19 @@ public class PlayerAuthInputSerializer_v686_NetEase extends PlayerAuthInputSeria
         }
         packet.setAnalogMoveVector(helper.readVector2f(buffer));
 
-        // NetEase only start
-        buffer.readBoolean(); // ThirdPersonPerspective
-        buffer.readFloatLE();
-        buffer.readFloatLE(); // PlayerRotationToCamera
-        buffer.readBoolean(); // ReadyPosDeltaDirty
-        buffer.readBoolean(); // OnGround
-        buffer.readByte(); // ResetPosition
-        // NetEase only end
+        if (packet instanceof NetEasePlayerAuthInputPacket netEase) {
+            netEase.setThirdPersonPerspective(buffer.readBoolean());
+            netEase.setPlayerRotationToCamera(Vector2f.from(buffer.readFloatLE(), buffer.readFloatLE()));
+            netEase.setReadyPosDeltaDirty(buffer.readBoolean());
+            netEase.setOnGround(buffer.readBoolean());
+            netEase.setResetPosition(buffer.readByte());
+        } else {
+            buffer.readBoolean(); // ThirdPersonPerspective
+            buffer.readFloatLE();
+            buffer.readFloatLE(); // PlayerRotationToCamera
+            buffer.readBoolean(); // ReadyPosDeltaDirty
+            buffer.readBoolean(); // OnGround
+            buffer.readByte(); // ResetPosition
+        }
     }
 }
