@@ -1,4 +1,4 @@
-package org.allaymc.protocol.extension.codec.v818;
+package org.allaymc.protocol.extension.codec.v819;
 
 import io.netty.buffer.ByteBuf;
 import org.cloudburstmc.protocol.bedrock.codec.EntityDataTypeMap;
@@ -14,11 +14,11 @@ import org.cloudburstmc.protocol.common.util.VarInts;
 import java.math.BigInteger;
 import java.util.Set;
 
-public class BedrockCodecHelper_v818_NetEase extends BedrockCodecHelper_v776 {
+public class BedrockCodecHelper_v819_NetEase extends BedrockCodecHelper_v776 {
 
     private static final int PLAYER_AUTH_INPUT_DATA_NETEASE = PlayerAuthInputData.RECEIVED_SERVER_DATA.ordinal() + 1;
 
-    public BedrockCodecHelper_v818_NetEase(EntityDataTypeMap entityData, TypeMap<Class<?>> gameRulesTypes, TypeMap<ItemStackRequestActionType> stackRequestActionTypes, TypeMap<ContainerSlotType> containerSlotTypes, TypeMap<Ability> abilities, TypeMap<TextProcessingEventOrigin> textProcessingEventOrigins) {
+    public BedrockCodecHelper_v819_NetEase(EntityDataTypeMap entityData, TypeMap<Class<?>> gameRulesTypes, TypeMap<ItemStackRequestActionType> stackRequestActionTypes, TypeMap<ContainerSlotType> containerSlotTypes, TypeMap<Ability> abilities, TypeMap<TextProcessingEventOrigin> textProcessingEventOrigins) {
         super(entityData, gameRulesTypes, stackRequestActionTypes, containerSlotTypes, abilities, textProcessingEventOrigins);
     }
 
