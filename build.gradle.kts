@@ -6,7 +6,7 @@ plugins {
 }
 
 group = "org.allaymc"
-version = "0.1.8-SNAPSHOT"
+version = "0.2.0-SNAPSHOT"
 description = "NetEase protocol extension for CloudburstMC/Protocol"
 
 repositories {
@@ -16,10 +16,7 @@ repositories {
 }
 
 dependencies {
-    val protocol = "3.0.0.Beta12-20260324.161234-12"
-    api(group = "org.cloudburstmc.protocol", name = "bedrock-connection", version = protocol)
-    api(group = "org.cloudburstmc.protocol", name = "common", version = protocol)
-    api(group = "org.cloudburstmc.protocol", name = "bedrock-codec", version = protocol)
+    api(group = "org.allaymc.protocol", name = "bedrock-connection", version = "1.26.10-R1")
     compileOnly(group = "org.projectlombok", name = "lombok", version = "1.18.34")
     annotationProcessor(group = "org.projectlombok", name = "lombok", version = "1.18.34")
 }
