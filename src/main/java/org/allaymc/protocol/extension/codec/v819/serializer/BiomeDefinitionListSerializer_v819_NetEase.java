@@ -35,8 +35,8 @@ public class BiomeDefinitionListSerializer_v819_NetEase extends BiomeDefinitionL
         boolean rain = buffer.readBoolean();
 
         // NetEase only
-        buffer.readIntLE(); // mDimension
-        helper.readString(buffer); // mVanilla
+        buffer.readIntLE(); // mDimensionId
+        helper.readString(buffer); // mWorldName
 
         IndexedList<String> tags = helper.readOptional(buffer, null, byteBuf -> {
             int length = VarInts.readUnsignedInt(byteBuf);
@@ -71,8 +71,8 @@ public class BiomeDefinitionListSerializer_v819_NetEase extends BiomeDefinitionL
         buffer.writeBoolean(definition.isRain());
 
         // NetEase only
-        buffer.writeIntLE(0); // mDimension
-        helper.writeString(buffer, ""); // mVanilla
+        buffer.writeIntLE(0); // mDimensionId
+        helper.writeString(buffer, ""); // mWorldName
 
         helper.writeOptionalNull(buffer, definition.getTags(), (byteBuf, aHelper, tags) -> {
             VarInts.writeUnsignedInt(byteBuf, tags.size());
