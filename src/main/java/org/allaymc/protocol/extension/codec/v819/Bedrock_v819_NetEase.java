@@ -3,6 +3,7 @@ package org.allaymc.protocol.extension.codec.v819;
 import org.allaymc.protocol.extension.codec.common.serializer.*;
 import org.allaymc.protocol.extension.codec.v686.serializer.TextSerializer_v686_NetEase;
 import org.allaymc.protocol.extension.codec.v766.serializer.PlayerAuthInputSerializer_v766_NetEase;
+import org.allaymc.protocol.extension.codec.v819.serializer.BiomeDefinitionListSerializer_v819_NetEase;
 import org.allaymc.protocol.extension.packet.ConfirmSkinPacket;
 import org.allaymc.protocol.extension.packet.NetEaseJsonPacket;
 import org.allaymc.protocol.extension.packet.NetEasePlayerAuthInputPacket;
@@ -14,6 +15,7 @@ import org.cloudburstmc.protocol.bedrock.codec.v712.Bedrock_v712;
 import org.cloudburstmc.protocol.bedrock.codec.v819.Bedrock_v819;
 import org.cloudburstmc.protocol.bedrock.data.PacketRecipient;
 import org.cloudburstmc.protocol.bedrock.data.inventory.ContainerSlotType;
+import org.cloudburstmc.protocol.bedrock.packet.BiomeDefinitionListPacket;
 import org.cloudburstmc.protocol.bedrock.packet.PlayerAuthInputPacket;
 import org.cloudburstmc.protocol.bedrock.packet.PlayerEnchantOptionsPacket;
 import org.cloudburstmc.protocol.bedrock.packet.TextPacket;
@@ -42,6 +44,7 @@ public class Bedrock_v819_NetEase extends Bedrock_v819 {
             .updateSerializer(TextPacket.class, TextSerializer_v686_NetEase.INSTANCE)
             .aliasPacket(NetEaseTextPacket.class, TextPacket.class)
             .updateSerializer(PlayerEnchantOptionsPacket.class, PlayerEnchantOptionsSerializer_v407_NetEase.INSTANCE)
+            .updateSerializer(BiomeDefinitionListPacket.class, BiomeDefinitionListSerializer_v819_NetEase.INSTANCE)
             .registerPacket(PyRpcPacket::new, PyRpcSerializer.INSTANCE, 200, PacketRecipient.BOTH)
             .registerPacket(StoreBuySuccessPacket::new, StoreBuySuccessSerializer.INSTANCE, 202, PacketRecipient.BOTH)
             .registerPacket(NetEaseJsonPacket::new, NetEaseJsonSerializer.INSTANCE, 203, PacketRecipient.BOTH)
