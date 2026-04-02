@@ -2,6 +2,9 @@
 
 [![protocol-extension](https://img.shields.io/maven-central/v/org.allaymc/protocol-extension?label=protocol-extension)](https://central.sonatype.com/artifact/org.allaymc/protocol-extension)
 
+> [!IMPORTANT]
+> This library has been merged to [AllayMC/Protocol](https://github.com/AllayMC/Protocol)
+
 A NetEase (China) Minecraft protocol extension library for [CloudburstMC/Protocol](https://github.com/CloudburstMC/Protocol).
 
 ## Features
